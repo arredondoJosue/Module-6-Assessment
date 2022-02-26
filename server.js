@@ -29,7 +29,7 @@ app.use(express.static(path.join(__dirname, './public')))
 
 app.get('/api/robots', (req, res) => {
     try {
-        res.status(200).send(bots)
+        res.status(200).send(botsArr)
     } catch (error) {
         rollbar.critical('Getting Bots button broke af')
         console.log('ERROR GETTING BOTS', error)
