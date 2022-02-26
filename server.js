@@ -17,8 +17,7 @@ var rollbar = new Rollbar({
 
 // record a generic message and send it to Rollbar
 rollbar.log('Hello world!')
-rollbar.log('Goodbye stupid rollbar! Why arent you working?')
-rollbar.error('Goodbye stupid rollbar! Why arent you working?')
+rollbar.error('Goodbye dumb rollbar! Why arent you working?')
 
 const port = process.env.PORT || 3000
 
@@ -126,20 +125,6 @@ app.get('/api/player', (req, res) => {
         rollbar.warning('this is a test warning error')
     }
 })
-
-try {
-    rollbar.log('testing')
-} catch (error) {
-    rollbar.error('this is a test error')
-    rollbar.critical('this is a test critical error')
-    rollbar.warning('this is a test warning error')
-}
-
-rollbar.log('testing')
-rollbar.error('this is a test error')
-rollbar.critical('this is a test critical error')
-rollbar.warning('this is a test warning error')
-rollbar.critical('rollbar is broken. nothing is getting through. Def not my fault but rollbar....')
 
 // app.use(rollbar.errorHandler())
 
