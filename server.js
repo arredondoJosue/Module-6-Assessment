@@ -27,7 +27,7 @@ app.get('/', (req, res) => {
     rollbar.info('wtf, rollbar. why arent you sending data?')
 })
 
-app.use(express.static(path.join(__dirname, './public')))
+app.use(express.static(path.join(__dirname, '/public')))
 
 app.get('/api/robots', (req, res) => {
     try {
