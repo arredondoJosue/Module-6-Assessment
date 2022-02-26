@@ -124,6 +124,19 @@ app.get('/api/player', (req, res) => {
     }
 })
 
+try {
+    rollbar.log('testing')
+} catch (error) {
+    rollbar.error('this is a test error')
+    rollbar.critical('this is a test critical error')
+    rollbar.warning('this is a test warning error')
+}
+
+rollbar.log('testing')
+rollbar.error('this is a test error')
+rollbar.critical('this is a test critical error')
+rollbar.warning('this is a test warning error')
+
 const port = process.env.PORT || 3000
 
 app.listen(port, () => {
