@@ -48,6 +48,14 @@ app.get('/api/robots/five', (req, res) => {
         res.sendStatus(400)
         rollbar.critical('Getting five Bots button broke af. Fix it')
     }
+
+    try {
+        rollbar.log('testing')
+    } catch (error) {
+        rollbar.error('this is a test error')
+        rollbar.critical('this is a test critical error')
+        rollbar.warning('this is a test warning error')
+    }
 })
 
 app.post('/api/duel', (req, res) => {
