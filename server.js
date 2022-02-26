@@ -71,19 +71,23 @@ app.post('/api/duel', (req, res) => {
         let playerHealth = playerDuo[0].health + playerDuo[1].health
         let playerAttack = playerDuo[0].attacks[0].damage + playerDuo[0].attacks[1].damage + playerDuo[1].attacks[0].damage + playerDuo[1].attacks[1].damage
         
+        rollbar.log(playerAttack)
         // calculating how much health is left after the attacks on each other
         let compHealthAfterAttack = compHealth - playerAttack
         let playerHealthAfterAttack = playerHealth - compAttack
 
+        rollbar.log(compHealthAfterAttack)
         // comparing the total health to determine a winner
         if (compHealthAfterAttack > playerHealthAfterAttack) {
             playerRecord.losses++
+            rollbar.log(playerRecord.wins++)
             rollbar.log('Player lost')
             res.status(200).send('You lost!')
 
         } else {
             playerRecord.losses++
             rollbar.log('Player won')
+            rollbar.log(playerRecord.losses)
             res.status(200).send('You won!')
         }
     } catch (error) {
@@ -103,6 +107,7 @@ app.post('/api/duel', (req, res) => {
 
 app.get('/api/player', (req, res) => {
     try {
+        rollbar.log(playerRecord)
         res.status(200).send(playerRecord)
     } catch (error) {
         console.log('ERROR GETTING PLAYER STATS', error)
