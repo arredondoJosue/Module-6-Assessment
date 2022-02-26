@@ -141,7 +141,7 @@ rollbar.critical('this is a test critical error')
 rollbar.warning('this is a test warning error')
 rollbar.critical('rollbar is broken. nothing is getting through. Def not my fault but rollbar....')
 
-app.use(rollbar.errorHandler())
+// app.use(rollbar.errorHandler())
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`)
