@@ -138,6 +138,8 @@ rollbar.error('this is a test error')
 rollbar.critical('this is a test critical error')
 rollbar.warning('this is a test warning error')
 
+app.use(rollbar.errorHandler())
+
 app.listen(port, () => {
   console.log(`Listening on port ${port}`)
 })
