@@ -139,6 +139,7 @@ rollbar.log('testing')
 rollbar.error('this is a test error')
 rollbar.critical('this is a test critical error')
 rollbar.warning('this is a test warning error')
+rollbar.critical('rollbar is broken. nothing is getting through. Def not my fault but rollbar....')
 
 app.use(rollbar.errorHandler())
 
