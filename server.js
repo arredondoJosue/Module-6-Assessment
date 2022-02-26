@@ -126,7 +126,7 @@ app.get('/api/player', (req, res) => {
     }
 })
 
-// app.use(rollbar.errorHandler())
+app.use(rollbar.errorHandler())
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`)
