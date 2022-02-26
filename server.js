@@ -18,7 +18,7 @@ var rollbar = new Rollbar({
 // record a generic message and send it to Rollbar
 rollbar.log('Hello world!')
 
-
+const port = process.env.PORT || 3000
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/index.html'))
@@ -28,7 +28,7 @@ app.use(express.static(path.join(__dirname, './public')))
 
 app.get('/api/robots', (req, res) => {
     try {
-        res.status(200).send(botsArr)
+        res.status(200).send(bots)
     } catch (error) {
         rollbar.critical('Getting Bots button broke af')
         console.log('ERROR GETTING BOTS', error)
@@ -110,8 +110,8 @@ app.get('/api/player', (req, res) => {
         rollbar.log(playerRecord)
         res.status(200).send(playerRecord)
     } catch (error) {
-        console.log('ERROR GETTING PLAYER STATS', error)
         rollbar.warning('player record not displaying')
+        console.log('ERROR GETTING PLAYER STATS', error)
         res.sendStatus(400)
     }
 
@@ -136,8 +136,6 @@ rollbar.log('testing')
 rollbar.error('this is a test error')
 rollbar.critical('this is a test critical error')
 rollbar.warning('this is a test warning error')
-
-const port = process.env.PORT || 3000
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`)
